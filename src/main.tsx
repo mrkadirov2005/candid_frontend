@@ -1,11 +1,9 @@
-import '#/shared/styles/root.css';
-import { UnheadProvider } from '@unhead/react/client';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { headConfig, queryClientConfig } from '#/shared/configs';
-import { router } from '#/router';
-import { RouterProvider } from 'react-router';
-import { QueryClientProvider } from '@tanstack/react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Router } from './router/router';
+
+const queryClient = new QueryClient();
 
 const root = document.getElementById('root');
 if (!root) {
@@ -14,10 +12,8 @@ if (!root) {
 
 createRoot(root).render(
   <StrictMode>
-    <UnheadProvider head={headConfig}>
-      <QueryClientProvider client={queryClientConfig}>
-        <RouterProvider router={router} />
-      </QueryClientProvider>
-    </UnheadProvider>
+    <QueryClientProvider client={queryClient}>
+      <Router />
+    </QueryClientProvider>
   </StrictMode>,
 );

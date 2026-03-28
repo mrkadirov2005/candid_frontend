@@ -1,0 +1,1 @@
+export type UserRoleType='employer'|'student'|'university_admin'|'teacher'
